@@ -1,0 +1,20 @@
+- hosts: Docker
+  tasks:
+
+  - name: Installing HTTPD Services
+    package:
+      name: httpd
+      state: present
+
+  - name: Installing PHP Software
+    package:
+      name: php
+      state: present
+
+  - name: Creating web page
+    template:
+      src: index.html
+      dest: "/var/www/html/"
+
+  - name: Starting HTTPD Service
+    command: /usr/sbin/httpd
